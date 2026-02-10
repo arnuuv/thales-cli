@@ -1,0 +1,199 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║             THALES FICTITIOUS GENERATOR - QUICKSTART                 ║
+║                                                                      ║
+║                   Get Running in 60 Seconds                          ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 1: VERIFY GO IS INSTALLED
+═══════════════════════════════════════════════════════════════════════
+
+Open a terminal and run:
+
+    $ go version
+
+You should see: go version go1.22.x (or higher)
+
+If not installed:
+    macOS:  $ brew install go
+    Linux:  Download from https://go.dev/dl/
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 2: RUN THE APPLICATION
+═══════════════════════════════════════════════════════════════════════
+
+Navigate to the project directory:
+
+    $ cd /Users/thales-cli
+
+Then choose ONE of these methods:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+METHOD A: Quick Start Script (Easiest!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    $ ./run.sh
+
+This script will:
+• Check if Go is installed
+• Download dependencies automatically
+• Build the binary if needed
+• Launch the application
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+METHOD B: Using Makefile
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    $ make run
+
+Or build first, then run:
+
+    $ make build
+    $ ./thales-fictitious-generator
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+METHOD C: Manual (For full control)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    $ go mod download
+    $ go build -o thales-fictitious-generator cmd/main.go
+    $ ./thales-fictitious-generator
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+METHOD D: Direct Run (No build)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    $ go run cmd/main.go
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 3: EXPERIENCE THE UI
+═══════════════════════════════════════════════════════════════════════
+
+Once launched, you'll see:
+
+1. STARTUP SCREEN (2 seconds)
+   • Large ASCII title with RGB gradient
+   • Cyan → Teal → Purple → Electric Blue
+   • "Initializing..." message
+
+2. MAIN INTERFACE
+   • Title banner with gradient
+   • Two rotating ASCII objects side-by-side:
+     - Left: Terrain/Map (teal, grid pattern)
+     - Right: Maritime Ship (electric blue)
+   • Objects alternate brightness every 5 seconds
+   • Status section showing mode and domain
+   • Interactive menu with options
+
+3. SMOOTH ANIMATION
+   • 30 FPS rendering (smooth, no flicker)
+   • Objects rotate continuously
+   • Active object glows brighter
+   • Inactive object dims
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 4: INTERACT
+═══════════════════════════════════════════════════════════════════════
+
+Press these keys:
+
+    [1]     Select Terrain & Map Imagery
+            Status updates: "Selected Terrain & Map Imagery"
+
+    [2]     Select Maritime Imagery
+            Status updates: "Selected Maritime Imagery"
+
+    [Q]     Quit the application
+            Returns to terminal with cursor restored
+
+
+═══════════════════════════════════════════════════════════════════════
+THAT'S IT!
+═══════════════════════════════════════════════════════════════════════
+
+You're now running a premium, cinematic terminal UI!
+
+
+═══════════════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════
+
+Problem: "go: command not found"
+Solution: Install Go (see Step 1)
+
+Problem: "cannot find package"
+Solution: Run: go mod download
+
+Problem: Colors not showing correctly
+Solution: Use a modern terminal with 24-bit color support
+         (iTerm2, Terminal.app, GNOME Terminal, Windows Terminal)
+
+Problem: ASCII art looks broken
+Solution: Use a monospace font
+         Ensure UTF-8 encoding is enabled
+
+Problem: Permission denied on ./run.sh
+Solution: Make it executable: chmod +x run.sh
+
+Problem: Animation is choppy
+Solution: Try a different terminal emulator
+         Close resource-intensive applications
+
+
+═══════════════════════════════════════════════════════════════════════
+WHAT'S INCLUDED
+═══════════════════════════════════════════════════════════════════════
+
+✓ Premium cinematic UI with aerospace/defense aesthetic
+✓ Smooth 30 FPS animation
+✓ Rotating 3D-illusion ASCII objects
+✓ RGB gradient title (24-bit color)
+✓ Alternating object emphasis (5-second cycle)
+✓ Keyboard interaction
+✓ Dynamic layout (adapts to terminal size)
+✓ Clean, modular Go code
+✓ Comprehensive documentation
+
+
+═══════════════════════════════════════════════════════════════════════
+NEXT STEPS
+═══════════════════════════════════════════════════════════════════════
+
+Want to learn more?
+
+→ README.txt              Full user documentation
+→ ARCHITECTURE.txt        Technical design & structure
+→ VISUAL_PREVIEW.txt      Visual design details
+→ SETUP.txt               Detailed installation guide
+→ PROJECT_SUMMARY.txt     Complete project overview
+
+
+Want to customize?
+
+→ Change colors:          Edit ui/colors.go
+→ Modify ASCII art:       Edit ascii/map.go or ascii/ship.go
+→ Adjust animation speed: Edit animation/ticker.go
+→ Add menu options:       Edit state/app_state.go
+→ Change layout:          Edit ui/layout.go
+
+
+═══════════════════════════════════════════════════════════════════════
+ENJOY!
+═══════════════════════════════════════════════════════════════════════
+
+You now have a fully functional, premium terminal UI comparable to
+modern defense/aerospace internal tools.
+
+This is a UI prototype - no actual imagery generation is implemented.
+The focus is on creating a polished, cinematic user experience.
+
+For questions, refer to the documentation files or examine the
+well-commented source code.
+
+═══════════════════════════════════════════════════════════════════════

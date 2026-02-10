@@ -1,0 +1,288 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║          THALES FICTITIOUS GENERATOR - INSTALLATION GUIDE            ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+═══════════════════════════════════════════════════════════════════════
+PREREQUISITES
+═══════════════════════════════════════════════════════════════════════
+
+Before installing, you need:
+
+1. Go 1.22 or higher
+2. Git
+3. A terminal with 24-bit color support
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 1: INSTALL GO
+═══════════════════════════════════════════════════════════════════════
+
+macOS:
+------
+Using Homebrew (recommended):
+    $ brew install go
+
+Manual installation:
+    1. Visit https://go.dev/dl/
+    2. Download the macOS installer (.pkg file)
+    3. Run the installer
+    4. Verify: go version
+
+
+Linux:
+------
+Ubuntu/Debian:
+    $ sudo apt update
+    $ sudo apt install golang-go
+
+Fedora:
+    $ sudo dnf install golang
+
+Arch Linux:
+    $ sudo pacman -S go
+
+Manual installation:
+    $ wget https://go.dev/dl/go1.22.0.linux-amd64.tar.gz
+    $ sudo tar -C /usr/local -xzf go1.22.0.linux-amd64.tar.gz
+    $ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+    $ source ~/.bashrc
+
+
+Windows:
+--------
+1. Visit https://go.dev/dl/
+2. Download the Windows installer (.msi file)
+3. Run the installer
+4. Verify in PowerShell: go version
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 2: CLONE THE REPOSITORY
+═══════════════════════════════════════════════════════════════════════
+
+Open your terminal and run:
+
+    $ git clone https://github.com/YOUR_USERNAME/thales-cli.git
+    $ cd thales-cli
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 3: INSTALL DEPENDENCIES
+═══════════════════════════════════════════════════════════════════════
+
+The project uses Go modules, so dependencies install automatically:
+
+    $ go mod download
+    $ go mod tidy
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 4: BUILD THE APPLICATION
+═══════════════════════════════════════════════════════════════════════
+
+Option A - Using Make (recommended):
+    $ make build
+
+Option B - Manual build:
+    $ go build -o thales-fictitious-generator cmd/main.go
+
+
+═══════════════════════════════════════════════════════════════════════
+STEP 5: RUN THE APPLICATION
+═══════════════════════════════════════════════════════════════════════
+
+Option A - Using the quick start script:
+    $ ./run.sh
+
+Option B - Run the binary directly:
+    $ ./thales-fictitious-generator
+
+Option C - Run without building:
+    $ go run cmd/main.go
+
+
+═══════════════════════════════════════════════════════════════════════
+QUICK START (ALL STEPS COMBINED)
+═══════════════════════════════════════════════════════════════════════
+
+For experienced users, here's the quick version:
+
+    # Install Go (if not already installed)
+    $ brew install go                    # macOS
+    $ sudo apt install golang-go         # Ubuntu/Debian
+
+    # Clone and run
+    $ git clone https://github.com/YOUR_USERNAME/thales-cli.git
+    $ cd thales-cli
+    $ ./run.sh
+
+
+═══════════════════════════════════════════════════════════════════════
+OPTIONAL: INSTALL SYSTEM-WIDE
+═══════════════════════════════════════════════════════════════════════
+
+To install the binary to your system PATH:
+
+macOS/Linux:
+    $ make install
+    # OR manually:
+    $ sudo cp thales-fictitious-generator /usr/local/bin/
+    
+    # Then run from anywhere:
+    $ thales-fictitious-generator
+
+
+Windows:
+    1. Copy thales-fictitious-generator.exe to C:\Program Files\
+    2. Add to PATH environment variable
+    3. Run from anywhere: thales-fictitious-generator
+
+
+═══════════════════════════════════════════════════════════════════════
+TERMINAL REQUIREMENTS
+═══════════════════════════════════════════════════════════════════════
+
+For the best experience, use a terminal that supports:
+
+✓ 24-bit truecolor (16.7 million colors)
+✓ UTF-8 encoding
+✓ Minimum 80x30 character display
+
+Recommended terminals:
+• macOS: iTerm2, Terminal.app (10.14+)
+• Linux: GNOME Terminal, Alacritty, Kitty, Konsole
+• Windows: Windows Terminal
+
+
+═══════════════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════
+
+Problem: "go: command not found"
+Solution: Install Go (see Step 1) and ensure it's in your PATH
+         Run: echo $PATH | grep go
+
+Problem: "permission denied: ./run.sh"
+Solution: Make the script executable
+         $ chmod +x run.sh
+
+Problem: "cannot find package"
+Solution: Install dependencies
+         $ go mod download
+         $ go mod tidy
+
+Problem: Colors not displaying correctly
+Solution: Ensure your terminal supports 24-bit color
+         Set environment variable: export COLORTERM=truecolor
+
+Problem: ASCII art looks broken
+Solution: Use a monospace font
+         Ensure UTF-8 encoding is enabled
+
+Problem: Build fails with "import cycle"
+Solution: This shouldn't happen with the current code
+         Try: go clean -cache
+         Then rebuild
+
+
+═══════════════════════════════════════════════════════════════════════
+CONTROLS
+═══════════════════════════════════════════════════════════════════════
+
+Once running:
+
+[1]  - Select Terrain & Map Imagery
+[2]  - Select Maritime Imagery
+[Q]  - Quit application
+
+
+═══════════════════════════════════════════════════════════════════════
+DEVELOPMENT
+═══════════════════════════════════════════════════════════════════════
+
+To modify the code:
+
+1. Make your changes to the source files
+2. Rebuild: make build
+3. Test: ./thales-fictitious-generator
+
+Project structure:
+    cmd/           - Main application entry point
+    ui/            - User interface and rendering
+    ascii/         - ASCII art assets
+    animation/     - Animation logic
+    state/         - Application state
+    input/         - Keyboard handling
+
+
+═══════════════════════════════════════════════════════════════════════
+UNINSTALL
+═══════════════════════════════════════════════════════════════════════
+
+To remove the application:
+
+    # Remove the binary
+    $ rm thales-fictitious-generator
+    
+    # If installed system-wide
+    $ sudo rm /usr/local/bin/thales-fictitious-generator
+    
+    # Remove the entire project
+    $ cd ..
+    $ rm -rf thales-cli
+
+
+═══════════════════════════════════════════════════════════════════════
+DEPENDENCIES
+═══════════════════════════════════════════════════════════════════════
+
+The project uses these Go packages (auto-installed):
+
+• github.com/charmbracelet/bubbletea  - Terminal UI framework
+• github.com/charmbracelet/lipgloss   - Styling and layout
+
+All dependencies are managed via go.mod and install automatically.
+
+
+═══════════════════════════════════════════════════════════════════════
+SYSTEM REQUIREMENTS
+═══════════════════════════════════════════════════════════════════════
+
+Minimum:
+• Go 1.22+
+• 10 MB disk space
+• Terminal with 80x30 character display
+
+Recommended:
+• Go 1.22+
+• Terminal with 24-bit color support
+• 100x40+ character display for best experience
+
+
+═══════════════════════════════════════════════════════════════════════
+GETTING HELP
+═══════════════════════════════════════════════════════════════════════
+
+If you encounter issues:
+
+1. Check TROUBLESHOOTING section above
+2. Read SETUP.txt for detailed setup instructions
+3. Read README.txt for usage information
+4. Check the GitHub Issues page
+5. Ensure you have the latest version: git pull
+
+
+═══════════════════════════════════════════════════════════════════════
+LICENSE & CREDITS
+═══════════════════════════════════════════════════════════════════════
+
+This is a UI prototype for a Thales-style synthetic imagery system.
+Built with Go, Bubble Tea, and Lipgloss.
+
+For more information, see README.txt
+
+
+═══════════════════════════════════════════════════════════════════════
