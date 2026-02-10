@@ -4,7 +4,6 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-// HandleKeyPress processes keyboard input and returns appropriate actions
 func HandleKeyPress(msg tea.KeyMsg) (action string, value string) {
 	switch msg.Type {
 	case tea.KeyCtrlC:
@@ -17,7 +16,6 @@ func HandleKeyPress(msg tea.KeyMsg) (action string, value string) {
 		return "select", ""
 	}
 
-	// Handle specific key presses
 	switch msg.String() {
 	case "q", "Q":
 		return "quit", ""

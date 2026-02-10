@@ -13,7 +13,6 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-// Model represents the application model for Bubble Tea
 type Model struct {
 	appState      *state.AppState
 	rotation      *animation.RotationState
@@ -23,7 +22,6 @@ type Model struct {
 	startupTime   time.Time
 }
 
-// InitialModel creates the initial model
 func InitialModel() Model {
 	return Model{
 		appState:      state.NewAppState(),
@@ -35,16 +33,13 @@ func InitialModel() Model {
 	}
 }
 
-// Init initializes the model
 func (m Model) Init() tea.Cmd {
-	// Start animation ticker and request initial window size
 	return tea.Batch(
 		animation.AnimationTicker(),
 		showStartup(),
 	)
 }
 
-// showStartup returns a command to show startup screen
 func showStartup() tea.Cmd {
 	return tea.Tick(2*time.Second, func(t time.Time) tea.Msg {
 		return startupDoneMsg{}
@@ -53,7 +48,6 @@ func showStartup() tea.Cmd {
 
 type startupDoneMsg struct{}
 
-// Update handles messages and updates the model
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 
@@ -98,7 +92,6 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-// View renders the view
 func (m Model) View() string {
 	if !m.ready {
 		return "Loading..."
@@ -112,14 +105,12 @@ func (m Model) View() string {
 }
 
 func main() {
-	// Create the program with proper options
 	p := tea.NewProgram(
 		InitialModel(),
-		tea.WithAltScreen(),       // Use alternate screen buffer
-		tea.WithMouseCellMotion(), // Enable mouse support
+		tea.WithAltScreen(),
+		tea.WithMouseCellMotion(),
 	)
 
-	// Run the program
 	if _, err := p.Run(); err != nil {
 		fmt.Fprintf(os.Stderr, "Error running program: %v\n", err)
 		os.Exit(1)
