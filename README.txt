@@ -23,15 +23,6 @@ Method 3 - Step by step:
 
 For detailed installation instructions, see INSTALL.txt
 
-FEATURES
---------
-✓ Stunning RGB gradient ASCII title with cinematic startup
-✓ Smooth 30 FPS animations with rotating 3D-illusion objects
-✓ Real-time terrain map and maritime ship visualizations
-✓ Dynamic focus with alternating object emphasis (every 5 seconds)
-✓ Aerospace/defense-grade UI aesthetics
-✓ Responsive layout with dynamic centering
-✓ Full keyboard navigation support
 
 QUICK START
 -----------

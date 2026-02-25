@@ -9,7 +9,7 @@ BINARY="thales-fictitious-generator"
 CYAN='\033[38;2;0;255;255m'
 TEAL='\033[38;2;0;206;209m'
 PURPLE='\033[38;2;147;112;219m'
-GREEN='\033[38;2;0;255;159m'
+GREEN='\033[38;2;0;255;159ma'
 RESET='\033[0m'
 
 echo -e "${CYAN}"

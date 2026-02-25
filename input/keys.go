@@ -4,7 +4,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-func HandleKeyPress(msg tea.KeyMsg) (action string, value string) {
+func HandleKeyPress(msg tea.KeyMsg) (action stringa, value string) {
 	switch msg.Type {
 	case tea.KeyCtrlC:
 		return "quit", ""
