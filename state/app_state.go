@@ -21,11 +21,15 @@ type Option struct {
 
 // AppState holds the application state
 type AppState struct {
-	SelectedDomain Domain
-	SelectedOption string
-	Status         string
-	CursorPos      int
-	Options        []Option
+	SelectedDomain         Domain
+	SelectedOption         string
+	Status                 string
+	CursorPos              int
+	Options                []Option
+	LastMapOutputDir       string   // After map generation
+	LastMaritimeGeoJSONPath string  // After maritime GeoJSON production
+	GeneratingMap          bool     // True while map generation runs
+	GeneratingMaritime     bool     // True while maritime GeoJSON runs
 }
 
 // NewAppState creates a new application state
@@ -98,6 +102,13 @@ func NewAppState() *AppState {
 				IsSubOption: true,
 				ParentKey: "2",
 			},
+			{
+				Key:         "2d",
+				Label:       "  - Produce GeoJSON routes",
+				Domain:      DomainMaritime,
+				IsSubOption: true,
+				ParentKey:   "2",
+			},
 		},
 	}
 }
@@ -143,4 +154,29 @@ func (s *AppState) GetCurrentOption() Option {
 		return s.Options[s.CursorPos]
 	}
 	return Option{}
+}
+
+// ResolutionForMapOption returns the resolution string for map option keys (1a->1m, 1b->10m, 1c->25cm).
+// Returns "" if not a map resolution option.
+func ResolutionForMapOption(key string) string {
+	switch key {
+	case "1a":
+		return "1m"
+	case "1b":
+		return "10m"
+	case "1c":
+		return "25cm"
+	default:
+		return ""
+	}
+}
+
+// IsMapResolutionOption returns true for 1a, 1b, 1c
+func IsMapResolutionOption(key string) bool {
+	return ResolutionForMapOption(key) != ""
+}
+
+// IsMaritimeGeoJSONOption returns true for 2d
+func IsMaritimeGeoJSONOption(key string) bool {
+	return key == "2d"
 }

@@ -116,6 +116,9 @@ func (l *Layout) renderStatus(appState *state.AppState) string {
 
 	mode := Green.ToANSI() + "Mode:" + Reset + " UI Prototype"
 	statusText := Cyan.ToANSI() + "Status:" + Reset + " " + appState.Status
+	if appState.GeneratingMap || appState.GeneratingMaritime {
+		statusText = Cyan.ToANSI() + "Status:" + Reset + " " + Green.ToANSI() + "Generating... (see terminal)" + Reset
+	}
 
 	domain := Purple.ToANSI() + "Selected Domain:" + Reset + " "
 	switch appState.SelectedDomain {
@@ -148,9 +151,23 @@ func (l *Layout) renderMenu(appState *state.AppState) string {
 	menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Vessels" + Reset + "\n")
 	menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Sea Lanes" + Reset + "\n")
 	menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Coastal Assets" + Reset + "\n")
+	menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Produce GeoJSON routes" + Reset + "\n")
 	menu.WriteString("\n")
 
-	menu.WriteString("  " + Purple.ToANSI() + "[Q]" + Reset + " Quit\n")
+	menu.WriteString("  " + Teal.Dim(0.8).ToANSI() + "↑/↓ Select  Enter Generate/Produce  [D] Download  [Q] Quit" + Reset + "\n")
+	if appState.LastMapOutputDir != "" || appState.LastMaritimeGeoJSONPath != "" {
+		menu.WriteString("  " + Green.Dim(0.8).ToANSI() + "Output: ")
+		if appState.LastMapOutputDir != "" {
+			menu.WriteString(appState.LastMapOutputDir)
+		}
+		if appState.LastMaritimeGeoJSONPath != "" {
+			if appState.LastMapOutputDir != "" {
+				menu.WriteString("  |  ")
+			}
+			menu.WriteString(appState.LastMaritimeGeoJSONPath)
+		}
+		menu.WriteString(Reset + "\n")
+	}
 
 	return menu.String()
 }

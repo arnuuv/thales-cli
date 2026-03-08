@@ -3,10 +3,12 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/arnavanchan/thales-cli/animation"
 	"github.com/arnavanchan/thales-cli/input"
+	"github.com/arnavanchan/thales-cli/runner"
 	"github.com/arnavanchan/thales-cli/state"
 	"github.com/arnavanchan/thales-cli/ui"
 
@@ -81,11 +83,39 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "select":
 			currentOpt := m.appState.GetCurrentOption()
 			m.appState.SelectOption(currentOpt.Key)
+			// Run generation if applicable
+			m, cmd := runGenerationIfSelected(m, currentOpt.Key)
+			return m, cmd
 
 		case "select_key":
 			m.appState.SelectOption(value)
+			m, cmd := runGenerationIfSelected(m, value)
+			return m, cmd
+
+		case "download":
+			return m, openLastOutput(m)
 		}
 
+		return m, nil
+
+	case runner.MapGenDoneMsg:
+		m.appState.GeneratingMap = false
+		m.appState.LastMapOutputDir = msg.OutDir
+		if msg.Err != nil {
+			m.appState.Status = "Map generation failed: " + msg.Err.Error()
+		} else {
+			m.appState.Status = "Map generation complete. Press [D] to open output folder."
+		}
+		return m, nil
+
+	case runner.MaritimeGeoJSONDoneMsg:
+		m.appState.GeneratingMaritime = false
+		m.appState.LastMaritimeGeoJSONPath = msg.OutPath
+		if msg.Err != nil {
+			m.appState.Status = "Maritime GeoJSON failed: " + msg.Err.Error()
+		} else {
+			m.appState.Status = "GeoJSON routes ready. Press [D] to download/open."
+		}
 		return m, nil
 	}
 
@@ -102,6 +132,39 @@ func (m Model) View() string {
 	}
 
 	return m.layout.Render(m.appState, m.rotation)
+}
+
+// runGenerationIfSelected starts map or maritime generation if the selected option is 1a/1b/1c or 2d.
+func runGenerationIfSelected(m Model, key string) (Model, tea.Cmd) {
+	baseDir, err := os.Getwd()
+	if err != nil {
+		baseDir = "."
+	}
+	if state.IsMapResolutionOption(key) {
+		res := state.ResolutionForMapOption(key)
+		outDir := filepath.Join(baseDir, "output", "maps")
+		m.appState.GeneratingMap = true
+		m.appState.Status = "Generating map at " + res + "..."
+		return m, runner.RunMapGeneration(baseDir, res, outDir)
+	}
+	if state.IsMaritimeGeoJSONOption(key) {
+		outPath := filepath.Join(baseDir, "output", "maritime", "routes.geojson")
+		m.appState.GeneratingMaritime = true
+		m.appState.Status = "Producing GeoJSON routes..."
+		return m, runner.RunMaritimeGeoJSON(baseDir, outPath)
+	}
+	return m, nil
+}
+
+// openLastOutput opens the last generated output (map folder or maritime GeoJSON file).
+func openLastOutput(m Model) tea.Cmd {
+	if m.appState.LastMaritimeGeoJSONPath != "" {
+		return runner.OpenOutputPath(m.appState.LastMaritimeGeoJSONPath)
+	}
+	if m.appState.LastMapOutputDir != "" {
+		return runner.OpenOutputPath(m.appState.LastMapOutputDir)
+	}
+	return nil
 }
 
 func main() {

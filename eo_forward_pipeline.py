@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 Complete Electro-Optical (EO) Forward Imaging Pipeline
@@ -19,6 +18,8 @@ Pipeline stages:
 Author: Thales EO Simulation Team
 """
 
+from dataclasses import dataclass
+from typing import Optional, Tuple, Literal
 
 # Optional dependencies
 OPENCV_AVAILABLE = False
