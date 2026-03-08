@@ -30,15 +30,31 @@ type AppState struct {
 	LastMaritimeGeoJSONPath string  // After maritime GeoJSON production
 	GeneratingMap          bool     // True while map generation runs
 	GeneratingMaritime     bool     // True while maritime GeoJSON runs
+	
+	// Terrain generation state
+	SelectedResolutions    []string // Selected resolutions: "1m", "10m", "25cm"
+	SelectedAreaKm         float64  // Selected area size in km (1 or 2)
+	TerrainSelectionStep   string   // "resolution", "area", or "done"
+	
+	// Maritime generation state
+	MaritimeSelectionStep  string   // "options" or "done"
+	
+	// Dataset packaging
+	LastDatasetZipPath     string   // Path to generated ZIP file
 }
 
 // NewAppState creates a new application state
 func NewAppState() *AppState {
 	return &AppState{
-		SelectedDomain: DomainNone,
-		SelectedOption: "",
-		Status:         "Idle",
-		CursorPos:      0,
+		SelectedDomain:       DomainNone,
+		SelectedOption:       "",
+		Status:               "Idle",
+		CursorPos:            0,
+		SelectedResolutions:  []string{},
+		SelectedAreaKm:       0,
+		TerrainSelectionStep: "",
+		MaritimeSelectionStep: "",
+		LastDatasetZipPath:   "",
 		Options: []Option{
 			{
 				Key:    "1",
@@ -179,4 +195,39 @@ func IsMapResolutionOption(key string) bool {
 // IsMaritimeGeoJSONOption returns true for 2d
 func IsMaritimeGeoJSONOption(key string) bool {
 	return key == "2d"
+}
+
+// ToggleResolution adds or removes a resolution from the selection
+func (s *AppState) ToggleResolution(res string) {
+	for i, r := range s.SelectedResolutions {
+		if r == res {
+			// Remove it
+			s.SelectedResolutions = append(s.SelectedResolutions[:i], s.SelectedResolutions[i+1:]...)
+			return
+		}
+	}
+	// Add it
+	s.SelectedResolutions = append(s.SelectedResolutions, res)
+}
+
+// HasResolution checks if a resolution is selected
+func (s *AppState) HasResolution(res string) bool {
+	for _, r := range s.SelectedResolutions {
+		if r == res {
+			return true
+		}
+	}
+	return false
+}
+
+// SelectAllResolutions selects all three resolutions
+func (s *AppState) SelectAllResolutions() {
+	s.SelectedResolutions = []string{"1m", "10m", "25cm"}
+}
+
+// ResetTerrainSelection resets terrain selection state
+func (s *AppState) ResetTerrainSelection() {
+	s.SelectedResolutions = []string{}
+	s.SelectedAreaKm = 0
+	s.TerrainSelectionStep = ""
 }

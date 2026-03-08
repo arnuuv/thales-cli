@@ -32,6 +32,15 @@ fi
 GO_VERSION=$(go version | awk '{print $3}')
 echo -e "${TEAL}✓ Found Go: ${GO_VERSION}${RESET}"
 
+# Activate Python virtual environment if it exists
+if [ -d "venv" ]; then
+    echo -e "${TEAL}✓ Activating Python virtual environment${RESET}"
+    source venv/bin/activate
+else
+    echo -e "${PURPLE}⚠ Warning: Python virtual environment not found${RESET}"
+    echo -e "${TEAL}  Run ./setup.sh first to create it${RESET}"
+fi
+
 # Check if dependencies need to be downloaded
 if [ ! -f "go.sum" ] || [ ! -d "vendor" ] && [ ! -f "$BINARY" ]; then
     echo -e "${TEAL}→ Downloading dependencies...${RESET}"

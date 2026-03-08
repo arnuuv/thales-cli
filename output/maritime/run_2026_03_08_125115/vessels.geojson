@@ -1,0 +1,195 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.37211464030842,
+          37.505002151044536
+        ]
+      },
+      "properties": {
+        "id": "vessel_001",
+        "name": "Passenger A1",
+        "type": "passenger",
+        "speed_knots": 22.4,
+        "heading": 50.2,
+        "mmsi": "200000000",
+        "length_m": 76
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.36466010251542,
+          37.67843591354097
+        ]
+      },
+      "properties": {
+        "id": "vessel_002",
+        "name": "Cargo B2",
+        "type": "cargo",
+        "speed_knots": 15.9,
+        "heading": 11.4,
+        "mmsi": "200000001",
+        "length_m": 73
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.45627240503927,
+          37.60107105762067
+        ]
+      },
+      "properties": {
+        "id": "vessel_003",
+        "name": "Cargo C3",
+        "type": "cargo",
+        "speed_knots": 15.6,
+        "heading": 257.8,
+        "mmsi": "200000002",
+        "length_m": 229
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.39101170387936,
+          37.54408812440814
+        ]
+      },
+      "properties": {
+        "id": "vessel_004",
+        "name": "Military D4",
+        "type": "military",
+        "speed_knots": 20.6,
+        "heading": 312.9,
+        "mmsi": "200000003",
+        "length_m": 244
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33883614963344,
+          37.63962787899765
+        ]
+      },
+      "properties": {
+        "id": "vessel_005",
+        "name": "Passenger E5",
+        "type": "passenger",
+        "speed_knots": 22.8,
+        "heading": 77.5,
+        "mmsi": "200000004",
+        "length_m": 245
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.43268109097747,
+          37.51854916867603
+        ]
+      },
+      "properties": {
+        "id": "vessel_006",
+        "name": "Cargo F6",
+        "type": "cargo",
+        "speed_knots": 13.6,
+        "heading": 123.8,
+        "mmsi": "200000005",
+        "length_m": 117
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33857434534512,
+          37.645946357338765
+        ]
+      },
+      "properties": {
+        "id": "vessel_007",
+        "name": "Military G7",
+        "type": "military",
+        "speed_knots": 17.5,
+        "heading": 332.0,
+        "mmsi": "200000006",
+        "length_m": 70
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.38959187374536,
+          37.6658809328506
+        ]
+      },
+      "properties": {
+        "id": "vessel_008",
+        "name": "Military H8",
+        "type": "military",
+        "speed_knots": 32.7,
+        "heading": 130.2,
+        "mmsi": "200000007",
+        "length_m": 99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.35908563275702,
+          37.509164876731134
+        ]
+      },
+      "properties": {
+        "id": "vessel_009",
+        "name": "Tanker I9",
+        "type": "tanker",
+        "speed_knots": 13.4,
+        "heading": 354.7,
+        "mmsi": "200000008",
+        "length_m": 268
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4534418227278,
+          37.52020028588195
+        ]
+      },
+      "properties": {
+        "id": "vessel_010",
+        "name": "Passenger J10",
+        "type": "passenger",
+        "speed_knots": 24.5,
+        "heading": 300.3,
+        "mmsi": "200000009",
+        "length_m": 91
+      }
+    }
+  ]
+}

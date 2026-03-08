@@ -1,0 +1,129 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.5,
+            37.5
+          ],
+          [
+            -122.49,
+            37.56
+          ],
+          [
+            -122.51,
+            37.64
+          ],
+          [
+            -122.5,
+            37.7
+          ]
+        ]
+      },
+      "properties": {
+        "id": "lane_001",
+        "name": "Shipping Lane A",
+        "direction": "northbound",
+        "width_m": 527,
+        "traffic_density": "low"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.5,
+            37.55
+          ],
+          [
+            -122.44,
+            37.559999999999995
+          ],
+          [
+            -122.36,
+            37.54
+          ],
+          [
+            -122.3,
+            37.55
+          ]
+        ]
+      },
+      "properties": {
+        "id": "lane_002",
+        "name": "Shipping Lane B",
+        "direction": "eastbound",
+        "width_m": 581,
+        "traffic_density": "low"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.4,
+            37.5
+          ],
+          [
+            -122.39,
+            37.56
+          ],
+          [
+            -122.41000000000001,
+            37.64
+          ],
+          [
+            -122.4,
+            37.7
+          ]
+        ]
+      },
+      "properties": {
+        "id": "lane_003",
+        "name": "Shipping Lane C",
+        "direction": "southbound",
+        "width_m": 569,
+        "traffic_density": "medium"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.5,
+            37.650000000000006
+          ],
+          [
+            -122.44,
+            37.660000000000004
+          ],
+          [
+            -122.36,
+            37.64000000000001
+          ],
+          [
+            -122.3,
+            37.650000000000006
+          ]
+        ]
+      },
+      "properties": {
+        "id": "lane_004",
+        "name": "Shipping Lane D",
+        "direction": "westbound",
+        "width_m": 650,
+        "traffic_density": "medium"
+      }
+    }
+  ]
+}

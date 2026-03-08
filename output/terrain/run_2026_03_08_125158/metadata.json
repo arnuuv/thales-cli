@@ -1,0 +1,16 @@
+{
+  "area_km": 1,
+  "bounds": {
+    "max_lat": 37.604504504504504,
+    "max_lon": -122.39436936936937,
+    "min_lat": 37.5954954954955,
+    "min_lon": -122.40563063063064
+  },
+  "generator": "Thales Synthetic EO Generator",
+  "resolutions": [
+    "1m",
+    "10m",
+    "25cm"
+  ],
+  "timestamp": "2026_03_08_125158"
+}

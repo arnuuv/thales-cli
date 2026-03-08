@@ -141,21 +141,44 @@ func (l *Layout) renderStatus(appState *state.AppState) string {
 func (l *Layout) renderMenu(appState *state.AppState) string {
 	var menu strings.Builder
 
-	menu.WriteString("  " + Cyan.ToANSI() + "[1]" + Reset + " Terrain & Map Imagery\n")
-	menu.WriteString("      " + Teal.Dim(0.7).ToANSI() + "- 1m Resolution" + Reset + "\n")
-	menu.WriteString("      " + Teal.Dim(0.7).ToANSI() + "- 10m Resolution" + Reset + "\n")
-	menu.WriteString("      " + Teal.Dim(0.7).ToANSI() + "- 25cm Resolution" + Reset + "\n")
-	menu.WriteString("\n")
+	// Show terrain selection state
+	if appState.TerrainSelectionStep == "resolution" {
+		menu.WriteString("  " + Cyan.ToANSI() + "Select Resolution(s):" + Reset + "\n")
+		menu.WriteString("      " + getCheckbox(appState.HasResolution("1m")) + " [1] 1m Resolution\n")
+		menu.WriteString("      " + getCheckbox(appState.HasResolution("10m")) + " [2] 10m Resolution\n")
+		menu.WriteString("      " + getCheckbox(appState.HasResolution("25cm")) + " [3] 25cm Resolution\n")
+		menu.WriteString("      " + Teal.Dim(0.7).ToANSI() + "[4] All Resolutions" + Reset + "\n")
+		menu.WriteString("      " + Green.ToANSI() + "[Enter] Continue" + Reset + "\n")
+		menu.WriteString("\n")
+	} else if appState.TerrainSelectionStep == "area" {
+		menu.WriteString("  " + Cyan.ToANSI() + "Select Area Size:" + Reset + "\n")
+		menu.WriteString("      " + getCheckbox(appState.SelectedAreaKm == 1.0) + " [1] 1km x 1km\n")
+		menu.WriteString("      " + getCheckbox(appState.SelectedAreaKm == 2.0) + " [2] 2km x 2km\n")
+		menu.WriteString("      " + Green.ToANSI() + "[Enter] Generate" + Reset + "\n")
+		menu.WriteString("\n")
+		menu.WriteString("  " + Teal.Dim(0.7).ToANSI() + "Selected resolutions: " + formatResolutions(appState.SelectedResolutions) + Reset + "\n")
+		menu.WriteString("\n")
+	} else {
+		// Normal menu
+		menu.WriteString("  " + Cyan.ToANSI() + "[1]" + Reset + " Terrain & Map Imagery\n")
+		menu.WriteString("      " + Teal.Dim(0.7).ToANSI() + "- 1m Resolution" + Reset + "\n")
+		menu.WriteString("      " + Teal.Dim(0.7).ToANSI() + "- 10m Resolution" + Reset + "\n")
+		menu.WriteString("      " + Teal.Dim(0.7).ToANSI() + "- 25cm Resolution" + Reset + "\n")
+		menu.WriteString("\n")
 
-	menu.WriteString("  " + Electric.ToANSI() + "[2]" + Reset + " Maritime Imagery\n")
-	menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Vessels" + Reset + "\n")
-	menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Sea Lanes" + Reset + "\n")
-	menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Coastal Assets" + Reset + "\n")
-	menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Produce GeoJSON routes" + Reset + "\n")
-	menu.WriteString("\n")
+		menu.WriteString("  " + Electric.ToANSI() + "[2]" + Reset + " Maritime Imagery\n")
+		menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Vessels" + Reset + "\n")
+		menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Sea Lanes" + Reset + "\n")
+		menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Coastal Assets" + Reset + "\n")
+		menu.WriteString("      " + Electric.Dim(0.7).ToANSI() + "- Produce GeoJSON routes" + Reset + "\n")
+		menu.WriteString("\n")
+	}
 
-	menu.WriteString("  " + Teal.Dim(0.8).ToANSI() + "↑/↓ Select  Enter Generate/Produce  [D] Download  [Q] Quit" + Reset + "\n")
-	if appState.LastMapOutputDir != "" || appState.LastMaritimeGeoJSONPath != "" {
+	menu.WriteString("  " + Teal.Dim(0.8).ToANSI() + "[D] Download  [Q] Quit" + Reset + "\n")
+	
+	if appState.LastDatasetZipPath != "" {
+		menu.WriteString("  " + Green.Dim(0.8).ToANSI() + "Latest Dataset: " + appState.LastDatasetZipPath + Reset + "\n")
+	} else if appState.LastMapOutputDir != "" || appState.LastMaritimeGeoJSONPath != "" {
 		menu.WriteString("  " + Green.Dim(0.8).ToANSI() + "Output: ")
 		if appState.LastMapOutputDir != "" {
 			menu.WriteString(appState.LastMapOutputDir)
@@ -170,6 +193,29 @@ func (l *Layout) renderMenu(appState *state.AppState) string {
 	}
 
 	return menu.String()
+}
+
+// getCheckbox returns a checkbox character based on selection state
+func getCheckbox(selected bool) string {
+	if selected {
+		return Green.ToANSI() + "[✓]" + Reset
+	}
+	return Gray.ToANSI() + "[ ]" + Reset
+}
+
+// formatResolutions formats the resolution list for display
+func formatResolutions(resolutions []string) string {
+	if len(resolutions) == 0 {
+		return "none"
+	}
+	result := ""
+	for i, res := range resolutions {
+		if i > 0 {
+			result += ", "
+		}
+		result += res
+	}
+	return result
 }
 
 // centerText centers text accounting for ANSI codes

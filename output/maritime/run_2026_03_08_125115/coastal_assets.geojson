@@ -1,0 +1,240 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.37948617808242,
+          37.54676138982991
+        ]
+      },
+      "properties": {
+        "id": "lighthouse_001",
+        "name": "Lighthouse A1",
+        "type": "lighthouse",
+        "range_nm": 19,
+        "height_m": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.36156823870344,
+          37.501434168073665
+        ]
+      },
+      "properties": {
+        "id": "port_002",
+        "name": "Port B2",
+        "type": "port",
+        "berths": 9,
+        "max_draft_m": 15
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31555677424402,
+          37.67064658204532
+        ]
+      },
+      "properties": {
+        "id": "buoy_003",
+        "name": "Buoy C3",
+        "type": "buoy",
+        "buoy_type": "special_mark",
+        "light": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.30747207624033,
+          37.516302307039005
+        ]
+      },
+      "properties": {
+        "id": "anchorage_004",
+        "name": "Anchorage D4",
+        "type": "anchorage"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.30142808646558,
+          37.60062549513703
+        ]
+      },
+      "properties": {
+        "id": "port_005",
+        "name": "Port E5",
+        "type": "port",
+        "berths": 11,
+        "max_draft_m": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33216006972698,
+          37.55278063901493
+        ]
+      },
+      "properties": {
+        "id": "anchorage_006",
+        "name": "Anchorage F6",
+        "type": "anchorage"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32057344471133,
+          37.612600844317164
+        ]
+      },
+      "properties": {
+        "id": "pilot_station_007",
+        "name": "Pilot Station G7",
+        "type": "pilot_station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.45204019717941,
+          37.52017081708975
+        ]
+      },
+      "properties": {
+        "id": "anchorage_008",
+        "name": "Anchorage H8",
+        "type": "anchorage"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.47035517547071,
+          37.61268361644401
+        ]
+      },
+      "properties": {
+        "id": "anchorage_009",
+        "name": "Anchorage I9",
+        "type": "anchorage"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.38695376522047,
+          37.66884014769041
+        ]
+      },
+      "properties": {
+        "id": "pilot_station_010",
+        "name": "Pilot Station J10",
+        "type": "pilot_station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32923002508254,
+          37.65878364022358
+        ]
+      },
+      "properties": {
+        "id": "buoy_011",
+        "name": "Buoy K11",
+        "type": "buoy",
+        "buoy_type": "navigation",
+        "light": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.49298994323762,
+          37.667819908245775
+        ]
+      },
+      "properties": {
+        "id": "anchorage_012",
+        "name": "Anchorage L12",
+        "type": "anchorage"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34594817772968,
+          37.51337425755084
+        ]
+      },
+      "properties": {
+        "id": "pilot_station_013",
+        "name": "Pilot Station M13",
+        "type": "pilot_station"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.39908843411311,
+          37.66477685022255
+        ]
+      },
+      "properties": {
+        "id": "anchorage_014",
+        "name": "Anchorage N14",
+        "type": "anchorage"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.35233101409732,
+          37.56270427558377
+        ]
+      },
+      "properties": {
+        "id": "pilot_station_015",
+        "name": "Pilot Station O15",
+        "type": "pilot_station"
+      }
+    }
+  ]
+}

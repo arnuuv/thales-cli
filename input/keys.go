@@ -13,7 +13,7 @@ func HandleKeyPress(msg tea.KeyMsg) (action string, value string) {
 	case tea.KeyDown:
 		return "move", "down"
 	case tea.KeyEnter:
-		return "select", ""
+		return "select_key", "enter"
 	}
 
 	switch msg.String() {
@@ -25,6 +25,10 @@ func HandleKeyPress(msg tea.KeyMsg) (action string, value string) {
 		return "select_key", "1"
 	case "2":
 		return "select_key", "2"
+	case "3":
+		return "select_key", "3"
+	case "4":
+		return "select_key", "4"
 	}
 
 	return "", ""

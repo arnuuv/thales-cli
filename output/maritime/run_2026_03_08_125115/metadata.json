@@ -1,0 +1,10 @@
+{
+  "generator": "Thales Maritime Generator",
+  "outputs": [
+    "vessels.geojson",
+    "sea_lanes.geojson",
+    "coastal_assets.geojson",
+    "routes.geojson"
+  ],
+  "timestamp": "2026_03_08_125115"
+}
